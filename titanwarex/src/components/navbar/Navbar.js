@@ -1,31 +1,39 @@
-import React, { useState } from 'react'
-import { SiDatabricks } from 'react-icons/si'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import React, {useState} from 'react'
+import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
-import './NavbarStyles.css'
+import './Navbar.css'
 
 const Navbar = () => {
-    const [nav, setNav] = useState(false)
-    const handleNav = () => setNav(!nav)
-
+    const [click, setClick] = useState(false)
+    const handleClick = () => setClick(!click)
 
     return (
-        <div name='top' className='navbar'>
+        <div className='navbar'>
             <div className="container">
-                <div className="logo">
-                    <SiDatabricks className='icon' />
-                    <h1>Secured</h1>
-                </div>
-
-                <ul className={nav ? 'nav-menu active' : 'nav-menu'}>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/recovery'>Recovery</Link> </li>
-                    <li><Link to='/cloud'>Cloud</Link></li>
-                    <li><Link to='/contact'>Contact</Link></li>
-                    <button>Sign in</button>
+                <h1 style={{ marginLeft: '1rem', color: '#027cfe'}} >TitanWareX</h1>
+                <ul className={click ? 'nav active' : 'nav'}>
+                <li className="nav-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="/about">About</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="/support">Support</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="/webide">Web IDE</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="/lib">Community</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className='btn' href="/login">Login</a>
+                    </li>
                 </ul>
-                <div className="hamburger" onClick={handleNav}>
-                    {!nav ? (<FaBars className='icon' />) : (<FaTimes className='icon' />)}
+                <div onClick={handleClick} className="hamburger">
+                    {click ? (<AiOutlineClose className='icon' />) : (<AiOutlineMenu className='icon' />)}
+                    
                 </div>
             </div>
         </div>
